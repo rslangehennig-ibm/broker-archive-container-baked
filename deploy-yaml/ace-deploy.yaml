@@ -1,0 +1,26 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: IntegrationRuntime
+metadata:
+  name: rsl-ace-ucd-demo
+  namespace: @@namespace@@
+spec:
+  flowType:
+    toolkitFlow: true
+  license:
+    accept: true
+    license: L-AWVV-J3WMK6
+    use: CloudPakForIntegrationNonProduction
+  template:
+    spec:
+      containers:
+        - name: runtime
+          image: quay.io/rslangehennig0/ace-12.0.7.0-r1-jgrcp4i-aceivt:@@version.name@@
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 500m
+              memory: 512Mi     
+  replicas: 2
+  version: 12.0.8.0-r3
